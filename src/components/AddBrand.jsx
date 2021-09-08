@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TutorialDataService from "../services/TutorialsService";
+import BrandDataService from "../services/BrandsService";
 
 const AddBrand = () => {
   const initialBrandState = {
@@ -59,7 +59,7 @@ const AddBrand = () => {
               className="form-control"
               id="brandId"
               required
-              value={tutorial.brandId}
+              value={brand.brandId}
               onChange={handleInputChange}
               name="brandId"
             />

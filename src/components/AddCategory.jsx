@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TutorialDataService from "../services/TutorialsService";
+import CategoryDataService from "../services/CategoriesService";
 
 const AddCategory = () => {
   const initialCategoryState = {
@@ -59,7 +59,7 @@ const AddCategory = () => {
               className="form-control"
               id="categoryId"
               required
-              value={tutorial.categoryId}
+              value={category.categoryId}
               onChange={handleInputChange}
               name="categoryId"
             />
