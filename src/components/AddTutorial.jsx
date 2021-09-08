@@ -56,15 +56,15 @@ const AddTutorial = () => {
     <div className="submit-form">
       {submitted ? (
         <div>
-          <h4>You submitted successfully!</h4>
+          <h4>Adicionado com sucesso!</h4>
           <button className="btn btn-success" onClick={newTutorial}>
-            Add
+            Adicionar
           </button>
         </div>
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="productName">Product Name</label>
+            <label htmlFor="productName">Nome do produto</label>
             <input
               type="text"
               className="form-control"
@@ -77,7 +77,7 @@ const AddTutorial = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="brandId">brandId</label>
+            <label htmlFor="brandId">ID da marca</label>
             <input
               type="text"
               className="form-control"
@@ -90,7 +90,7 @@ const AddTutorial = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="categoryId">categoryId</label>
+            <label htmlFor="categoryId">ID da categoria</label>
             <input
               type="text"
               className="form-control"
@@ -103,7 +103,7 @@ const AddTutorial = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="modelYear">modelYear</label>
+            <label htmlFor="modelYear">Modelo / Ano</label>
             <input
               type="text"
               className="form-control"
@@ -116,7 +116,7 @@ const AddTutorial = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="listPrice">listPrice</label>
+            <label htmlFor="listPrice">Preço</label>
             <input
               type="text"
               className="form-control"
@@ -129,7 +129,7 @@ const AddTutorial = () => {
           </div>
 
           <button onClick={saveTutorial} className="btn btn-success">
-            Submit
+            Adicionar
           </button>
         </div>
       )}
