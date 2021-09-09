@@ -68,7 +68,7 @@ const TutorialsList = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by title"
+            placeholder="Busca por nome"
             value={searchTitle}
             onChange={onChangeSearchTitle}
           />
@@ -78,13 +78,13 @@ const TutorialsList = () => {
               type="button"
               onClick={findByTitle}
             >
-              Search
+              Buscar
             </button>
           </div>
         </div>
       </div>
       <div className="col-md-6">
-        <h4>Tutorials List</h4>
+        <h4>Lista de produtos</h4>
 
         <ul className="list-group">
           {tutorials &&
@@ -105,46 +105,46 @@ const TutorialsList = () => {
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllTutorials}
         >
-          Remove All
+          Remover todos
         </button>
       </div>
       <div className="col-md-6">
         {currentTutorial ? (
           <div>
-            <h4>Tutorial</h4>
+            <h4>Produto</h4>
             <div>
               <label>
-                <strong>Product ID:</strong>
+                <strong>ID do produto:</strong>
               </label>{" "}
               {currentTutorial.productId}
             </div>
             <div>
               <label>
-                <strong>Product Name:</strong>
+                <strong>Nome:</strong>
               </label>{" "}
               {currentTutorial.productName}
             </div>
             <div>
               <label>
-                <strong>Brand Id:</strong>
+                <strong>ID da marca:</strong>
               </label>{" "}
               {currentTutorial.brandId}
             </div>
             <div>
               <label>
-                <strong>Category Id:</strong>
+                <strong>ID da categoria:</strong>
               </label>{" "}
               {currentTutorial.categoryId}
             </div>
             <div>
               <label>
-                <strong>Model Year:</strong>
+                <strong>Modelo / Ano:</strong>
               </label>{" "}
               {currentTutorial.modelYear}
             </div>
             <div>
               <label>
-                <strong>List Price:</strong>
+                <strong>Preço:</strong>
               </label>{" "}
               {currentTutorial.listPrice}
             </div>
@@ -152,13 +152,13 @@ const TutorialsList = () => {
               to={"/tutorials/" + currentTutorial.productId}
               className="badge badge-warning"
             >
-              Edit
+              Editar
             </Link>
           </div>
         ) : (
           <div>
             <br />
-            <p>Please click on a Tutorial...</p>
+            <p>Clique em um produto...</p>
           </div>
         )}
       </div>

@@ -84,7 +84,7 @@ const Tutorial = props => {
           <h4>PRODUTOS</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="productId">productId</label>
+              <label htmlFor="productId">ID do produto</label>
               <input
                 type="text"
                 className="form-control"
@@ -95,7 +95,7 @@ const Tutorial = props => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="productName">productName</label>
+              <label htmlFor="productName">Nome do produto</label>
               <input
                 type="text"
                 className="form-control"
@@ -107,7 +107,7 @@ const Tutorial = props => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="brandId">brandId</label>
+              <label htmlFor="brandId">ID da marca</label>
               <input
                 type="text"
                 className="form-control"
@@ -119,7 +119,7 @@ const Tutorial = props => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="categoryId">categoryId</label>
+              <label htmlFor="categoryId">ID da categoria</label>
               <input
                 type="text"
                 className="form-control"
@@ -131,7 +131,7 @@ const Tutorial = props => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="modelYear">modelYear</label>
+              <label htmlFor="modelYear">Modelo / Ano</label>
               <input
                 type="text"
                 className="form-control"
@@ -143,7 +143,7 @@ const Tutorial = props => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="listPrice">listPrice</label>
+              <label htmlFor="listPrice">Preço</label>
               <input
                 type="text"
                 className="form-control"
@@ -160,19 +160,19 @@ const Tutorial = props => {
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
             >
-              UnPublish
+              Remover
             </button>
           ) : (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(true)}
             >
-              Publish
+              Publicar
             </button>
           )}
 
           <button className="badge badge-danger mr-2" onClick={deleteTutorial}>
-            Delete
+            Apagar
           </button>
 
           <button
@@ -180,14 +180,14 @@ const Tutorial = props => {
             className="badge badge-success"
             onClick={updateTutorial}
           >
-            Update
+            Editar
           </button>
           <p>{message}</p>
         </div>
       ) : (
         <div>
           <br />
-          <p>Please click on a Tutorial...</p>
+          <p>Clique em um produto...</p>
         </div>
       )}
     </div>
