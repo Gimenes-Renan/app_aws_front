@@ -1,42 +1,42 @@
 import React, { useState } from "react";
-import TutorialDataService from "../services/TutorialsService";
+import ProductDataService from "../services/ProductsService";
 
-const AddTutorial = () => {
-  const initialTutorialState = {
+const AddProduct = () => {
+  const initialProductState = {
     productId: null,
     productName: "",
-    brandId: "",
-    categoryId: "",
-    modelYear: "",
+    brandName: "",
+    categoryName: "",
     listPrice: "",
+    quantity: "",
     published: false
   };
-  const [tutorial, setTutorial] = useState(initialTutorialState);
+  const [product, setProduct] = useState(initialProductState);
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setTutorial({ ...tutorial, [name]: value });
+    setProduct({ ...product, [name]: value });
   };
 
-  const saveTutorial = () => {
+  const saveProduct = () => {
     var data = {
-      productName: tutorial.productName,
-      brandId: tutorial.brandId,
-      categoryId: tutorial.categoryId,
-      modelYear: tutorial.modelYear,
-      listPrice: tutorial.listPrice
+      productName: product.productName,
+      brandName: product.brandName,
+      categoryName: product.categoryName,
+      listPrice: product.listPrice,
+      quantity: product.quantity
     };
 
-    TutorialDataService.create(data)
+    ProductDataService.create(data)
       .then(response => {
-        setTutorial({
+        setProduct({
           productId: response.data.productId,
           productName: response.data.productName,
-          brandId: response.data.brandId,
-          categoryId: response.data.categoryId,
-          modelYear: response.data.modelYear,
+          brandName: response.data.brandName,
+          categoryName: response.data.categoryName,
           listPrice: response.data.listPrice,
+          quantity: response.data.quantity,
           published: true
         });
         setSubmitted(true);
@@ -47,8 +47,8 @@ const AddTutorial = () => {
       });
   };
 
-  const newTutorial = () => {
-    setTutorial(initialTutorialState);
+  const newProduct = () => {
+    setProduct(initialProductState);
     setSubmitted(false);
   };
 
@@ -57,7 +57,7 @@ const AddTutorial = () => {
       {submitted ? (
         <div>
           <h4>Adicionado com sucesso!</h4>
-          <button className="btn btn-success" onClick={newTutorial}>
+          <button className="btn btn-success" onClick={newProduct}>
             Adicionar
           </button>
         </div>
@@ -70,48 +70,35 @@ const AddTutorial = () => {
               className="form-control"
               id="productName"
               required
-              value={tutorial.productName}
+              value={product.productName}
               onChange={handleInputChange}
               name="productName"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="brandId">ID da marca</label>
+            <label htmlFor="brandName">Marca</label>
             <input
               type="text"
               className="form-control"
-              id="brandId"
+              id="brandName"
               required
-              value={tutorial.brandId}
+              value={product.brandName}
               onChange={handleInputChange}
-              name="brandId"
+              name="brandName"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="categoryId">ID da categoria</label>
+            <label htmlFor="categoryName">Categoria</label>
             <input
               type="text"
               className="form-control"
-              id="categoryId"
+              id="categoryName"
               required
-              value={tutorial.categoryId}
+              value={product.categoryName}
               onChange={handleInputChange}
-              name="categoryId"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="modelYear">Modelo / Ano</label>
-            <input
-              type="text"
-              className="form-control"
-              id="modelYear"
-              required
-              value={tutorial.modelYear}
-              onChange={handleInputChange}
-              name="modelYear"
+              name="categoryName"
             />
           </div>
 
@@ -122,13 +109,26 @@ const AddTutorial = () => {
               className="form-control"
               id="listPrice"
               required
-              value={tutorial.listPrice}
+              value={product.listPrice}
               onChange={handleInputChange}
               name="listPrice"
             />
           </div>
 
-          <button onClick={saveTutorial} className="btn btn-success">
+          <div className="form-group">
+            <label htmlFor="quantity">Quantidade</label>
+            <input
+              type="text"
+              className="form-control"
+              id="quantity"
+              required
+              value={product.quantity}
+              onChange={handleInputChange}
+              name="quantity"
+            />
+          </div>
+
+          <button onClick={saveProduct} className="btn btn-success">
             Adicionar
           </button>
         </div>
@@ -137,4 +137,4 @@ const AddTutorial = () => {
   );
 };
 
-export default AddTutorial;
+export default AddProduct;
