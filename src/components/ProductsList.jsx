@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import TutorialDataService from "../services/TutorialsService";
+import ProductDataService from "../services/ProductsService";
 import { Link } from "react-router-dom";
 
-const TutorialsList = () => {
-  const [tutorials, setTutorials] = useState([]);
-  const [currentTutorial, setCurrentTutorial] = useState(null);
+const ProductsList = () => {
+  const [products, setProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
   useEffect(() => {
-    retrieveTutorials();
+    retrieveProducts();
   }, []);
 
   const onChangeSearchTitle = e => {
@@ -17,10 +17,10 @@ const TutorialsList = () => {
     setSearchTitle(searchTitle);
   };
 
-  const retrieveTutorials = () => {
-    TutorialDataService.getAll()
+  const retrieveProducts = () => {
+    ProductDataService.getAll()
       .then(response => {
-        setTutorials(response.data);
+        setProducts(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -29,18 +29,18 @@ const TutorialsList = () => {
   };
 
   const refreshList = () => {
-    retrieveTutorials();
-    setCurrentTutorial(null);
+    retrieveProducts();
+    setCurrentProduct(null);
     setCurrentIndex(-1);
   };
 
-  const setActiveTutorial = (tutorial, index) => {
-    setCurrentTutorial(tutorial);
+  const setActiveProduct = (product, index) => {
+    setCurrentProduct(product);
     setCurrentIndex(index);
   };
 
-  const removeAllTutorials = () => {
-    TutorialDataService.removeAll()
+  const removeAllProducts = () => {
+    ProductDataService.removeAll()
       .then(response => {
         console.log(response.data);
         refreshList();
@@ -51,9 +51,9 @@ const TutorialsList = () => {
   };
 
   const findByTitle = () => {
-    TutorialDataService.findByTitle(searchTitle)
+    ProductDataService.findByTitle(searchTitle)
       .then(response => {
-        setTutorials(response.data);
+        setProducts(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -87,69 +87,69 @@ const TutorialsList = () => {
         <h4>Lista de produtos</h4>
 
         <ul className="list-group">
-          {tutorials &&
-            tutorials.map((tutorial, index) => (
+          {products &&
+            products.map((product, index) => (
               <li
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => setActiveTutorial(tutorial, index)}
+                onClick={() => setActiveProduct(product, index)}
                 key={index}
               >
-                {tutorial.productName}
+                {product.productName}
               </li>
             ))}
         </ul>
 
         <button
           className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllTutorials}
+          onClick={removeAllProducts}
         >
           Remover todos
         </button>
       </div>
       <div className="col-md-6">
-        {currentTutorial ? (
+        {currentProduct ? (
           <div>
             <h4>Produto</h4>
             <div>
               <label>
                 <strong>ID do produto:</strong>
               </label>{" "}
-              {currentTutorial.productId}
+              {currentProduct.productId}
             </div>
             <div>
               <label>
                 <strong>Nome:</strong>
               </label>{" "}
-              {currentTutorial.productName}
+              {currentProduct.productName}
             </div>
             <div>
               <label>
-                <strong>ID da marca:</strong>
+                <strong>Marca:</strong>
               </label>{" "}
-              {currentTutorial.brandId}
+              {currentProduct.brandName}
             </div>
             <div>
               <label>
-                <strong>ID da categoria:</strong>
+                <strong>Categoria:</strong>
               </label>{" "}
-              {currentTutorial.categoryId}
-            </div>
-            <div>
-              <label>
-                <strong>Modelo / Ano:</strong>
-              </label>{" "}
-              {currentTutorial.modelYear}
+              {currentProduct.categoryName}
             </div>
             <div>
               <label>
                 <strong>Preço:</strong>
               </label>{" "}
-              {currentTutorial.listPrice}
+              {currentProduct.listPrice}
+            </div>
+            <div>
+              <label>
+                <strong>Quantidade:</strong>
+              </label>{" "}
+              {currentProduct.quantity}
             </div>
             <Link
-              to={"/tutorials/" + currentTutorial.productId}
+              to={"/products/" + currentProduct.productId}
               className="badge badge-warning"
             >
               Editar
@@ -166,4 +166,4 @@ const TutorialsList = () => {
   );
 };
 
-export default TutorialsList;
+export default ProductsList;

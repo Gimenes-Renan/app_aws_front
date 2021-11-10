@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-import TutorialDataService from "../services/TutorialsService";
+import ProductDataService from "../services/ProductsService";
 
-const Tutorial = props => {
-  const initialTutorialState = {
+const Product = props => {
+  const initialProductState = {
     productId: null,
     productName: "",
-    brandId: "",
-    categoryId: "",
-    modelYear: "",
+    brandName: "",
+    categoryName: "",
     listPrice: "",
+    quantity: "",
     published: false
   };
-  const [currentTutorial, setCurrentTutorial] = useState(initialTutorialState);
+  const [currentProduct, setCurrentProduct] = useState(initialProductState);
   const [message, setMessage] = useState("");
 
-  const getTutorial = id => {
-    TutorialDataService.get(id)
+  const getProduct = id => {
+    ProductDataService.get(id)
       .then(response => {
-        setCurrentTutorial(response.data);
+        setCurrentProduct(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -26,28 +26,28 @@ const Tutorial = props => {
   };
 
   useEffect(() => {
-    getTutorial(props.match.params.id);
+    getProduct(props.match.params.id);
   }, [props.match.params.id]);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setCurrentTutorial({ ...currentTutorial, [name]: value });
+    setCurrentProduct({ ...currentProduct, [name]: value });
   };
 
   const updatePublished = status => {
     var data = {
-      productId: currentTutorial.productId,
-      productName: currentTutorial.productName,
-      brandId: currentTutorial.brandId,
-      categoryId: currentTutorial.categoryId,
-      modelYear: currentTutorial.modelYear,
-      listPrice: currentTutorial.listPrice,
+      productId: currentProduct.productId,
+      productName: currentProduct.productName,
+      brandName: currentProduct.brandName,
+      categoryName: currentProduct.categoryName,
+      listPrice: currentProduct.listPrice,
+      quantity: currentProduct.quantity,
       published: status
     };
 
-    TutorialDataService.update(currentTutorial.id, data)
+    ProductDataService.update(currentProduct.id, data)
       .then(response => {
-        setCurrentTutorial({ ...currentTutorial, published: status });
+        setCurrentProduct({ ...currentProduct, published: status });
         console.log(response.data);
       })
       .catch(e => {
@@ -55,22 +55,22 @@ const Tutorial = props => {
       });
   };
 
-  const updateTutorial = () => {
-    TutorialDataService.update(currentTutorial.productId, currentTutorial)
+  const updateProduct = () => {
+    ProductDataService.update(currentProduct.productId, currentProduct)
       .then(response => {
         console.log(response.data);
-        setMessage("The tutorial was updated successfully!");
+        setMessage("Produto editado com sucesso!");
       })
       .catch(e => {
         console.log(e);
       });
   };
 
-  const deleteTutorial = () => {
-    TutorialDataService.remove(currentTutorial.productId)
+  const deleteProduct = () => {
+    ProductDataService.remove(currentProduct.productId)
       .then(response => {
         console.log(response.data);
-        props.history.push("/tutorials");
+        props.history.push("/products");
       })
       .catch(e => {
         console.log(e);
@@ -79,7 +79,7 @@ const Tutorial = props => {
 
   return (
     <div>
-      {currentTutorial ? (
+      {currentProduct ? (
         <div className="edit-form">
           <h4>PRODUTOS</h4>
           <form>
@@ -90,7 +90,7 @@ const Tutorial = props => {
                 className="form-control"
                 id="productId"
                 name="productId"
-                value={currentTutorial.productId}
+                value={currentProduct.productId}
                 onChange={handleInputChange}
               />
             </div>
@@ -101,43 +101,31 @@ const Tutorial = props => {
                 className="form-control"
                 id="productName"
                 name="productName"
-                value={currentTutorial.productName}
+                value={currentProduct.productName}
                 onChange={handleInputChange}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="brandId">ID da marca</label>
+              <label htmlFor="brandName">Marca</label>
               <input
                 type="text"
                 className="form-control"
-                id="brandId"
-                name="brandId"
-                value={currentTutorial.brandId}
+                id="brandName"
+                name="brandName"
+                value={currentProduct.brandName}
                 onChange={handleInputChange}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="categoryId">ID da categoria</label>
+              <label htmlFor="categoryName">Categoria</label>
               <input
                 type="text"
                 className="form-control"
-                id="categoryId"
-                name="categoryId"
-                value={currentTutorial.categoryId}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="modelYear">Modelo / Ano</label>
-              <input
-                type="text"
-                className="form-control"
-                id="modelYear"
-                name="modelYear"
-                value={currentTutorial.modelYear}
+                id="categoryName"
+                name="categoryName"
+                value={currentProduct.categoryName}
                 onChange={handleInputChange}
               />
             </div>
@@ -149,13 +137,25 @@ const Tutorial = props => {
                 className="form-control"
                 id="listPrice"
                 name="listPrice"
-                value={currentTutorial.listPrice}
+                value={currentProduct.listPrice}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="quantity">Quantidade</label>
+              <input
+                type="text"
+                className="form-control"
+                id="quantity"
+                name="quantity"
+                value={currentProduct.quantity}
                 onChange={handleInputChange}
               />
             </div>
           </form>
 
-          {currentTutorial.published ? (
+          {currentProduct.published ? (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
@@ -171,14 +171,14 @@ const Tutorial = props => {
             </button>
           )}
 
-          <button className="badge badge-danger mr-2" onClick={deleteTutorial}>
+          <button className="badge badge-danger mr-2" onClick={deleteProduct}>
             Apagar
           </button>
 
           <button
             type="submit"
             className="badge badge-success"
-            onClick={updateTutorial}
+            onClick={updateProduct}
           >
             Editar
           </button>
@@ -194,4 +194,4 @@ const Tutorial = props => {
   );
 };
 
-export default Tutorial;
+export default Product;
