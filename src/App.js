@@ -7,7 +7,11 @@ import AddProduct from "./components/AddProduct";
 import Product from "./components/Product";
 import ProductsList from "./components/ProductsList";
 import AddBrand from "./components/AddBrand";
+import Brand from "./components/Brand";
+import BrandsList from "./components/BrandsList";
 import AddCategory from "./components/AddCategory";
+import Category from "./components/Category";
+import CategoriesList from "./components/CategoriesList";
 
 function App() {
   return (
@@ -23,13 +27,23 @@ function App() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/add"} className="nav-link">
+            <Link to={"/addProduct"} className="nav-link">
               Adicionar produto
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/brands"} className="nav-link">
+              Lista de marcas
             </Link>
           </li>
           <li className="nav-item">
             <Link to={"/addBrand"} className="nav-link">
               Adicionar marca
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/categories"} className="nav-link">
+              Lista de categorias
             </Link>
           </li>
           <li className="nav-item">
@@ -43,10 +57,14 @@ function App() {
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/products"]} component={ProductsList} />
-          <Route exact path="/add" component={AddProduct} />
+          <Route exact path="/addProduct" component={AddProduct} />
+          <Route exact path={["/brands"]} component={BrandsList} />
           <Route exact path="/addBrand" component={AddBrand} />
+          <Route exact path={["/categories"]} component={CategoriesList} />      
           <Route exact path="/addCategory" component={AddCategory} />
           <Route path="/products/:id" component={Product} />
+          <Route path="/brands/:id" component={Brand} />
+          <Route path="/categories/:id" component={Category} />
         </Switch>
       </div>
     </div>
