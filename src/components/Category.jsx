@@ -37,7 +37,7 @@ const Category = props => {
       published: status
     };
 
-    CategoryDataService.update(currentCategory.id, data)
+    CategoryDataService.update(currentCategory.categoryId, data)
       .then(response => {
         setCurrentCategory({ ...currentCategory, published: status });
         console.log(response.data);
@@ -99,7 +99,7 @@ const Category = props => {
             </div>
           </form>
 
-          {currentCategory.published ? (
+          {/* {currentCategory.published ? (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
@@ -113,7 +113,7 @@ const Category = props => {
             >
               Publicar
             </button>
-          )}
+          )} */}
 
           <button className="badge badge-danger mr-2" onClick={deleteCategory}>
             Apagar

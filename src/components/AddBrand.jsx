@@ -17,7 +17,7 @@ const AddBrand = () => {
 
   const saveBrand = () => {
     var data = {
-      brandId: brand.brandId,
+      brandId: 0,
       brandName: brand.brandName
     };
 
@@ -52,7 +52,7 @@ const AddBrand = () => {
         </div>
       ) : (
         <div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="brandId">ID da marca</label>
             <input
               type="text"
@@ -63,7 +63,7 @@ const AddBrand = () => {
               onChange={handleInputChange}
               name="brandId"
             />
-          </div>
+          </div> */}
 
           <div className="form-group">
             <label htmlFor="brandName">Nome da marca</label>

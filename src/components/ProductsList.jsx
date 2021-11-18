@@ -128,13 +128,13 @@ const ProductsList = () => {
               <label>
                 <strong>Marca:</strong>
               </label>{" "}
-              {currentProduct.brandName}
+              {currentProduct.brand.brandName}
             </div>
             <div>
               <label>
                 <strong>Categoria:</strong>
               </label>{" "}
-              {currentProduct.categoryName}
+              {currentProduct.category.categoryName}
             </div>
             <div>
               <label>

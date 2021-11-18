@@ -5,7 +5,11 @@ const Product = props => {
   const initialProductState = {
     productId: null,
     productName: "",
+    brand: { brandId: "", brandName: "" },
+    brandId: "",
     brandName: "",
+    category: { categoryId: "", categoryName: "" },
+    categoryId: "",
     categoryName: "",
     listPrice: "",
     quantity: "",
@@ -45,7 +49,7 @@ const Product = props => {
       published: status
     };
 
-    ProductDataService.update(currentProduct.id, data)
+    ProductDataService.update(currentProduct.productId, data)
       .then(response => {
         setCurrentProduct({ ...currentProduct, published: status });
         console.log(response.data);
@@ -113,7 +117,7 @@ const Product = props => {
                 className="form-control"
                 id="brandName"
                 name="brandName"
-                value={currentProduct.brandName}
+                value={currentProduct.brand.brandName}
                 onChange={handleInputChange}
               />
             </div>
@@ -125,7 +129,7 @@ const Product = props => {
                 className="form-control"
                 id="categoryName"
                 name="categoryName"
-                value={currentProduct.categoryName}
+                value={currentProduct.category.categoryName}
                 onChange={handleInputChange}
               />
             </div>
@@ -155,7 +159,7 @@ const Product = props => {
             </div>
           </form>
 
-          {currentProduct.published ? (
+          {/* {currentProduct.published ? (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
@@ -169,7 +173,7 @@ const Product = props => {
             >
               Publicar
             </button>
-          )}
+          )} */}
 
           <button className="badge badge-danger mr-2" onClick={deleteProduct}>
             Apagar

@@ -37,7 +37,7 @@ const Brand = props => {
       published: status
     };
 
-    BrandDataService.update(currentBrand.id, data)
+    BrandDataService.update(currentBrand.brandId, data)
       .then(response => {
         setCurrentBrand({ ...currentBrand, published: status });
         console.log(response.data);
@@ -100,7 +100,7 @@ const Brand = props => {
 
           </form>
 
-          {currentBrand.published ? (
+          {/* {currentBrand.published ? (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
@@ -114,7 +114,7 @@ const Brand = props => {
             >
               Publicar
             </button>
-          )}
+          )} */}
 
           <button className="badge badge-danger mr-2" onClick={deleteBrand}>
             Apagar
