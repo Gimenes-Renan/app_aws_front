@@ -17,7 +17,7 @@ const AddCategory = () => {
 
   const saveCategory = () => {
     var data = {
-      categoryId: category.categoryId,
+      categoryId: 0,
       categoryName: category.categoryName
     };
 
@@ -52,7 +52,7 @@ const AddCategory = () => {
         </div>
       ) : (
         <div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="categoryId">ID da categoria</label>
             <input
               type="text"
@@ -63,7 +63,7 @@ const AddCategory = () => {
               onChange={handleInputChange}
               name="categoryId"
             />
-          </div>
+          </div> */}
 
           <div className="form-group">
             <label htmlFor="categoryName">Nome da categoria</label>

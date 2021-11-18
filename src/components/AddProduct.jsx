@@ -1,40 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductDataService from "../services/ProductsService";
+import BrandDataService from "../services/BrandsService";
+import CategoryDataService from "../services/CategoriesService";
 
 const AddProduct = () => {
   const initialProductState = {
     productId: null,
-    productName: "",
-    brandName: "",
-    categoryName: "",
-    listPrice: "",
-    quantity: "",
+    productName: '',
+    brandName: '',
+    brand: { brandName: '' },
+    categoryName: '',
+    category: { categoryName: '' },
+    listPrice: '',
+    quantity: '',
     published: false
   };
   const [product, setProduct] = useState(initialProductState);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = event => {
+  const [brands, setBrands] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    retrieveBrands();
+    retrieveCategories();
+  }, []);
+
+  const retrieveBrands = () => {
+    BrandDataService.getAll()
+      .then(response => {
+        setBrands(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const retrieveCategories = () => {
+    CategoryDataService.getAll()
+      .then(response => {
+        setCategories(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
   };
 
   const saveProduct = () => {
+    console.log('product', product.categoryName);
     var data = {
       productName: product.productName,
-      brandName: product.brandName,
-      categoryName: product.categoryName,
+      brand: { brandName: product.brandName },
+      category: { categoryName: product.categoryName },
       listPrice: product.listPrice,
       quantity: product.quantity
     };
+    console.log('data', data);
 
     ProductDataService.create(data)
-      .then(response => {
+      .then((response) => {
         setProduct({
           productId: response.data.productId,
           productName: response.data.productName,
-          brandName: response.data.brandName,
-          categoryName: response.data.categoryName,
+          brand: response.data.brand.brandName,
+          category: response.data.category.categoryName,
           listPrice: response.data.listPrice,
           quantity: response.data.quantity,
           published: true
@@ -42,7 +76,7 @@ const AddProduct = () => {
         setSubmitted(true);
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
@@ -51,6 +85,8 @@ const AddProduct = () => {
     setProduct(initialProductState);
     setSubmitted(false);
   };
+
+  
 
   return (
     <div className="submit-form">
@@ -76,31 +112,56 @@ const AddProduct = () => {
             />
           </div>
 
+          {/* <div className="form-group">
+            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">
+              Marca
+            </label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <option selected>Escolha...</option>
+              { brands.map((brand, index) => (
+              <option key={index}>
+                {brand.brandName}
+              </option>
+              )) }
+            </select>
+          </div> */}
+
           <div className="form-group">
             <label htmlFor="brandName">Marca</label>
-            <input
-              type="text"
-              className="form-control"
-              id="brandName"
-              required
-              value={product.brandName}
-              onChange={handleInputChange}
-              name="brandName"
-            />
+            <select className="custom-select mr-sm-2" name="brandName" id="brandName" onChange={handleInputChange}>
+              <option selected>Escolha...</option>
+              { brands.map((brand, index) => (
+              <option key={index} value={brand.brandName} name="brandName">
+                {brand.brandName}
+              </option>
+              )) }
+            </select>
           </div>
 
           <div className="form-group">
             <label htmlFor="categoryName">Categoria</label>
+            <select className="custom-select mr-sm-2" name="categoryName" id="categoryName" onChange={handleInputChange}>
+              <option selected>Escolha...</option>
+              { categories.map((category, index) => (
+              <option key={index} value={category.categoryName} name="categoryName">
+                {category.categoryName}
+              </option>
+              )) }
+            </select>
+          </div>
+
+          {/* <div className="form-group">
+            <label htmlFor="category">Categoria</label>
             <input
               type="text"
               className="form-control"
-              id="categoryName"
+              id="category"
               required
-              value={product.categoryName}
+              value={product.category.categoryName}
               onChange={handleInputChange}
-              name="categoryName"
+              name="category"
             />
-          </div>
+          </div> */}
 
           <div className="form-group">
             <label htmlFor="listPrice">Preço</label>
