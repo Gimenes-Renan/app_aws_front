@@ -101,12 +101,12 @@ const BrandsList = () => {
             ))}
         </ul>
 
-        <button
+        {/* <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllBrands}
         >
           Remover todas
-        </button>
+        </button> */}
       </div>
       <div className="col-md-6">
         {currentBrand ? (
