@@ -64,7 +64,7 @@ const AddBrand = () => {
               name="brandId"
             />
           </div> */}
-
+          <h4>Adicionar marca</h4>
           <div className="form-group">
             <label htmlFor="brandName">Nome da marca</label>
             <input

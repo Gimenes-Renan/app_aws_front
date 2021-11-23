@@ -100,6 +100,7 @@ const AddProduct = () => {
       ) : (
         <div>
           <div className="form-group">
+            <h4>Adicionar produto</h4>
             <label htmlFor="productName">Nome do produto</label>
             <input
               type="text"

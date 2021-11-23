@@ -73,10 +73,10 @@ const Brand = props => {
     <div>
       {currentBrand ? (
         <div className="edit-form">
-          <h4>MARCAS</h4>
+          <h4>Editar / Apagar marca</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="brandId">ID da marca</label>
+              {/* <label htmlFor="brandId">ID da marca</label>
               <input
                 type="text"
                 className="form-control"
@@ -84,7 +84,7 @@ const Brand = props => {
                 name="brandId"
                 value={currentBrand.brandId}
                 onChange={handleInputChange}
-              />
+              /> */}
             </div>
             <div className="form-group">
               <label htmlFor="brandName">Nome da marca</label>

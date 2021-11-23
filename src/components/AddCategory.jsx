@@ -64,7 +64,7 @@ const AddCategory = () => {
               name="categoryId"
             />
           </div> */}
-
+          <h4>Adicionar categoria</h4>
           <div className="form-group">
             <label htmlFor="categoryName">Nome da categoria</label>
             <input
