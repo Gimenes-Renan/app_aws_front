@@ -85,10 +85,10 @@ const Product = props => {
     <div>
       {currentProduct ? (
         <div className="edit-form">
-          <h4>PRODUTOS</h4>
+          <h4>Editar / Apagar produto</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="productId">ID do produto</label>
+              {/* <label htmlFor="productId">ID do produto</label>
               <input
                 type="text"
                 className="form-control"
@@ -96,7 +96,7 @@ const Product = props => {
                 name="productId"
                 value={currentProduct.productId}
                 onChange={handleInputChange}
-              />
+              /> */}
             </div>
             <div className="form-group">
               <label htmlFor="productName">Nome do produto</label>

@@ -73,10 +73,10 @@ const Category = props => {
     <div>
       {currentCategory ? (
         <div className="edit-form">
-          <h4>CATEGORIAS</h4>
+          <h4>Editar / Apagar categoria</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="categoryId">ID da categoria</label>
+              {/* <label htmlFor="categoryId">ID da categoria</label>
               <input
                 type="text"
                 className="form-control"
@@ -84,7 +84,7 @@ const Category = props => {
                 name="categoryId"
                 value={currentCategory.categoryId}
                 onChange={handleInputChange}
-              />
+              /> */}
             </div>
             <div className="form-group">
               <label htmlFor="categoryName">Nome da categoria</label>
