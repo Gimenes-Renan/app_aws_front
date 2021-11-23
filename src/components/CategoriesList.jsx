@@ -39,16 +39,16 @@ const CategoriesList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllCategories = () => {
-    CategoryDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+  // const removeAllCategories = () => {
+  //   CategoryDataService.removeAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   const findByTitle = () => {
     CategoryDataService.findByTitle(searchTitle)

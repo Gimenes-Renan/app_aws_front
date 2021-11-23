@@ -39,16 +39,16 @@ const BrandsList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllBrands = () => {
-    BrandDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+  // const removeAllBrands = () => {
+  //   BrandDataService.removeAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   const findByTitle = () => {
     BrandDataService.findByTitle(searchTitle)

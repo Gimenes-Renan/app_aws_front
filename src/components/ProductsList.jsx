@@ -39,16 +39,16 @@ const ProductsList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllProducts = () => {
-    ProductDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+  // const removeAllProducts = () => {
+  //   ProductDataService.removeAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   const findByTitle = () => {
     ProductDataService.findByTitle(searchTitle)
