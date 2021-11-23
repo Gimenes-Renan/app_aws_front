@@ -20,36 +20,48 @@ function App() {
         <a href="/products" className="navbar-brand">
           Módulo de produtos
         </a>
+
         <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/products"} className="nav-link">
-              Lista de produtos
-            </Link>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Produtos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <Link to={"/products"} className="dropdown-item">
+                Listar / Editar / Apagar
+              </Link>
+              <Link to={"/addProduct"} className="dropdown-item">
+                Adicionar
+              </Link>
+            </div>
           </li>
-          <li className="nav-item">
-            <Link to={"/addProduct"} className="nav-link">
-              Adicionar produto
-            </Link>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Marcas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <Link to={"/brands"} className="dropdown-item">
+                Listar / Editar / Apagar
+              </Link>
+              <Link to={"/addBrand"} className="dropdown-item">
+                Adicionar
+              </Link>
+            </div>
           </li>
-          <li className="nav-item">
-            <Link to={"/brands"} className="nav-link">
-              Lista de marcas
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/addBrand"} className="nav-link">
-              Adicionar marca
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/categories"} className="nav-link">
-              Lista de categorias
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/addCategory"} className="nav-link">
-              Adicionar categoria
-            </Link>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorias
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <Link to={"/categories"} className="dropdown-item">
+                Listar / Editar / Apagar
+              </Link>
+              <Link to={"/addCategory"} className="dropdown-item">
+                Adicionar
+              </Link>
+            </div>
           </li>
         </div>
       </nav>
@@ -60,7 +72,7 @@ function App() {
           <Route exact path="/addProduct" component={AddProduct} />
           <Route exact path={["/brands"]} component={BrandsList} />
           <Route exact path="/addBrand" component={AddBrand} />
-          <Route exact path={["/categories"]} component={CategoriesList} />      
+          <Route exact path={["/categories"]} component={CategoriesList} />
           <Route exact path="/addCategory" component={AddCategory} />
           <Route path="/products/:id" component={Product} />
           <Route path="/brands/:id" component={Brand} />

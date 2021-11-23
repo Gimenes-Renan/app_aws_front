@@ -39,16 +39,16 @@ const CategoriesList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllCategories = () => {
-    CategoryDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+  // const removeAllCategories = () => {
+  //   CategoryDataService.removeAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   const findByTitle = () => {
     CategoryDataService.findByTitle(searchTitle)
@@ -101,12 +101,12 @@ const CategoriesList = () => {
             ))}
         </ul>
 
-        <button
+        {/* <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllCategories}
         >
           Remover todas
-        </button>
+        </button> */}
       </div>
       <div className="col-md-6">
         {currentCategory ? (

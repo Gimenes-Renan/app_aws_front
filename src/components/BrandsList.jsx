@@ -39,16 +39,16 @@ const BrandsList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllBrands = () => {
-    BrandDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+  // const removeAllBrands = () => {
+  //   BrandDataService.removeAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   const findByTitle = () => {
     BrandDataService.findByTitle(searchTitle)
@@ -101,12 +101,12 @@ const BrandsList = () => {
             ))}
         </ul>
 
-        <button
+        {/* <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllBrands}
         >
           Remover todas
-        </button>
+        </button> */}
       </div>
       <div className="col-md-6">
         {currentBrand ? (

@@ -39,16 +39,16 @@ const ProductsList = () => {
     setCurrentIndex(index);
   };
 
-  const removeAllProducts = () => {
-    ProductDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+  // const removeAllProducts = () => {
+  //   ProductDataService.removeAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   const findByTitle = () => {
     ProductDataService.findByTitle(searchTitle)
@@ -101,12 +101,12 @@ const ProductsList = () => {
             ))}
         </ul>
 
-        <button
+        {/* <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllProducts}
         >
           Remover todos
-        </button>
+        </button> */}
       </div>
       <div className="col-md-6">
         {currentProduct ? (
